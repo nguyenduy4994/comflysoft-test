@@ -69,6 +69,30 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Map -->
+            <div id="map" class="map"></div>
+            <!-- End map -->
+
+            <x-slot name="scripts">
+                <script src="https://unpkg.com/elm-pep"></script>
+                <script>
+                    const RADIUS = {{ config('expose.radius') }};
+
+                    var currentPointPosition = [
+                        {{ $currentPoint->position->getLng() }}, 
+                        {{ $currentPoint->position->getLat() }}
+                    ]; // lng, lat
+
+                    var exposedPointPositions = [
+                        @foreach($points as $point)
+                        [{{ $point->position->getLng() }}, {{ $point->position->getLat() }}],
+                        @endforeach
+                    ];
+
+                </script>
+                <script src="/js/maps/main.js"></script>
+            </x-slot>
         </div>
     </div>
 </x-app-layout>

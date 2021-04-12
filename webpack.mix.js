@@ -17,6 +17,8 @@ mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'pub
     require('autoprefixer'),
 ]);
 
+mix.js('resources/js/map.js', 'public/js/maps/main.js');
+
 if (mix.inProduction()) {
     mix.version().minify();
 } else {
