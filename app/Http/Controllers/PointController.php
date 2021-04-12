@@ -16,7 +16,7 @@ class PointController extends Controller
     {
         return view('pages.point.index', [
             'personId' => $personId,
-            'points' => PointService::getByPersonIdWithPaginate($personId)
+            'points' => PointService::getByPersonIdWithPaginate($personId),
         ]);
     }
 
@@ -42,5 +42,17 @@ class PointController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function show($id)
+    {
+        $point = PointService::findOrFail($id);
+
+        $exposedPoints = PointService::getExposedByPointWithPaginate($point);
+
+        return view('pages.point.show', [
+            'currentPoint' => $point,
+            'points' => $exposedPoints,
+        ]);
     }
 }

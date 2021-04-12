@@ -2,8 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\Latitue;
-use App\Rules\Longitude;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StorePointRequest extends FormRequest
@@ -28,7 +26,7 @@ class StorePointRequest extends FormRequest
         return [
             'lat' => 'required|numeric|between:-90,90',
             'long' => 'required|numeric|between:-180,180',
-            'datetime' => 'required|date'
+            'datetime' => 'required|date',
         ];
     }
 }

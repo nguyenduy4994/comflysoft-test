@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Facades\PeopleService;
 use App\Http\Requests\StorePeopleRequest;
 use App\Http\Requests\UpdatePeopleRequest;
-use Illuminate\Http\Request;
 
 class PeopleController extends Controller
 {
@@ -31,7 +30,7 @@ class PeopleController extends Controller
     public function edit($id)
     {
         return view('pages.people.edit', [
-            'person' => PeopleService::findOrFail($id)
+            'person' => PeopleService::findOrFail($id),
         ]);
     }
 

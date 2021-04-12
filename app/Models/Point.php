@@ -23,4 +23,21 @@ class Point extends Model
     protected $casts = [
         'datetime' => 'datetime',
     ];
+
+    public function scopeDateTimeBetween($query, $startDateTime, $minutes)
+    {
+        return $query
+                ->where('datetime', '>=', $startDateTime->toDateTimeString())
+                ->where('datetime', '<=', $startDateTime->addMinutes($minutes)->toDateTimeString());
+    }
+
+    public function scopeNotId($query, $id)
+    {
+        return $query->where($this->getKeyName(), '<>', $id);
+    }
+
+    public function person()
+    {
+        return $this->belongsTo(People::class, 'people_id');
+    }
 }

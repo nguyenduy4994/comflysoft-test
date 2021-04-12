@@ -17,8 +17,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/point/{id}', [PointController::class, 'show'])->name('point.show');
 
 Route::resource('/people', PeopleController::class)->names('people')->except(['show']);
-Route::prefix('/people/{personId}')->group(function() {
+Route::prefix('/people/{personId}')->group(function () {
     Route::resource('/point', PointController::class)->names('point')->except(['show']);
 });
