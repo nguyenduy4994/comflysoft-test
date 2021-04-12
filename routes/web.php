@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PeopleController;
+use App\Http\Controllers\PointController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,4 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::resource('/people', PeopleController::class)->names('people');
+Route::resource('/people', PeopleController::class)->names('people')->except(['show']);
+Route::prefix('/people/{personId}')->group(function() {
+    Route::resource('/point', PointController::class)->names('point')->except(['show']);
+});

@@ -133,6 +133,9 @@ return [
     |
     */
 
+    'lat' => 'The :attribute must be a valid Latitude.',
+    'long' => 'The :attribute must be a valid Longitute.',
+
     'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',

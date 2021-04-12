@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('People') }}
+            {{ __('Position') }}
         </h2>
     </x-slot>
 
@@ -9,9 +9,31 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <x-session-status class="mb-4" :status="session('status')" />
 
-            <a href="{{ route('people.create') }}" class="mb-4 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">
-                @lang('Create')
-            </a>
+            <x-validation-errors class="mb-4" :errors="$errors" />
+
+            <form action="{{ route('point.store', ['personId' => $personId]) }}" method="POST">
+                @csrf
+
+                <div class="mb-4 flex">
+                    <div class="flex-1 pr-4">
+                        <x-label for="lat" :value="__('Lat')" />
+                        <x-input id="lat" class="block mt-1 w-full" type="text" name="lat" :value="old('lat')" required autofocus />
+                    </div>
+                    <div class="flex-1 pr-4">
+                        <x-label for="long" :value="__('Long')" />
+                        <x-input id="long" class="block mt-1 w-full" type="text" name="long" :value="old('long')" required autofocus />
+                    </div>
+                    <div class="flex-1">
+                        <x-label for="datetime" :value="__('Datetime')" />
+                        <x-input id="datetime" class="block mt-1 w-full" type="text" name="datetime" :value="old('datetime')" required autofocus />
+                    </div>
+                </div>
+
+                <x-button class="mb-4">
+                    {{ __('Add') }}
+                </x-button>
+
+            </form>
 
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-4">
                 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -22,7 +44,11 @@
                                     <tr>
                                         <th scope="col"
                                             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Name
+                                            Position
+                                        </th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Datetime
                                         </th>
                                         <th scope="col" class="relative px-6 py-3">
                                             <span class="sr-only">Edit</span>
@@ -30,13 +56,16 @@
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
-                                    @forelse($people as $person)
+                                    @forelse($points as $point)
                                     <tr>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            {{ $person->name }}
+                                            Lat: {{ $point->position->getLat() }}<br>
+                                            Long: {{ $point->position->getLng() }}
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            {{ $point->datetime }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <a href="{{ route('people.edit', $person) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a> |
                                             <a href="#" class="text-indigo-600 hover:text-indigo-900">Delete</a>
                                         </td>
                                     </tr>
@@ -44,7 +73,7 @@
                                     @empty
                                     <tr>
                                         <td class="px-6 py-4 whitespace-nowrap" colspan="2">
-                                            @lang('No people')
+                                            {{ __('No point') }}
                                         </td>
                                     </tr>
                                     @endforelse
@@ -57,7 +86,7 @@
                 </div>
             </div>
 
-            {{ $people->links() }}
+            {{ $points->links() }}
         </div>
     </div>
 </x-app-layout>
