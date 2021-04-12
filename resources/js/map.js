@@ -62,7 +62,7 @@ var map = new Map({
     target: 'map',
     view: new View({
         center: currentPointPosition,
-        zoom: 15,
+        zoom: 18,
     }),
     layers: [
         new TileLayer({
