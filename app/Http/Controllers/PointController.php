@@ -33,6 +33,12 @@ class PointController extends Controller
         return back()->with('status', __('Store success'));
     }
 
+    /**
+     * Show the point and its exposed
+     *
+     * @param integer $id
+     * @return \Illuminate\Http\Response
+     */
     public function show($id)
     {
         $point = PointService::findOrFail($id);
