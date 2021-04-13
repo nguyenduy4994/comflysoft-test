@@ -15,7 +15,7 @@ class PointService
     /**
      * World Geodetic System.
      */
-    private const SRID_WGS84 = 4326;
+    public const SRID_WGS84 = 4326;
 
     /**
      * Get list of point with paginate.

@@ -39,11 +39,19 @@
                                             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Point
                                         </th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Datetime
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
                                     @forelse($person->points as $point)
                                     <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            Lat: {{ $point->position->getLat() }}<br>
+                                            Long: {{ $point->position->getLng() }}
+                                        </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             {{ $point->datetime }}
                                         </td>

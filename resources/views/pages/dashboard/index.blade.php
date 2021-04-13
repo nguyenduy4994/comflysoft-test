@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             
-            <table class="min-w-full divide-y divide-gray-200">
+            <table class="min-w-full divide-y divide-gray-200 mb-4">
                 <thead class="bg-gray-50">
                     <tr>
                         <th scope="col"
@@ -51,6 +51,9 @@
                 </tbody>
             </table>
 
+            {{ $points->links() }}
         </div>
+
+        
     </div>
 </x-app-layout>

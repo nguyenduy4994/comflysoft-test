@@ -10,7 +10,8 @@
             <h2 class="mb-2 text-xl">{{ __('Selected Position') }}</h2>
             <div class="mb-4">
                 - Lat: {{ $currentPoint->position->getLat() }} <br>
-                - Long: {{ $currentPoint->position->getLng() }}
+                - Long: {{ $currentPoint->position->getLng() }} <br>
+                - Datetime: {{ $currentPoint->datetime }}
             </div>
 
             <h2 class="mb-2 text-xl">{{ __('Person') }}</h2>
@@ -28,6 +29,10 @@
                                     <tr>
                                         <th scope="col"
                                             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Person
+                                        </th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Position
                                         </th>
                                         <th scope="col"
@@ -42,6 +47,9 @@
                                 <tbody class="bg-white divide-y divide-gray-200">
                                     @forelse($points as $point)
                                     <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            {{ $point->person->name }}
+                                        </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             Lat: {{ $point->position->getLat() }}<br>
                                             Long: {{ $point->position->getLng() }}

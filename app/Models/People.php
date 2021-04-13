@@ -17,7 +17,7 @@ class People extends Model
     protected $fillable = ['name'];
 
     /**
-     * List of points relationship
+     * List of points relationship.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

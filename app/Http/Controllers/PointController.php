@@ -34,9 +34,9 @@ class PointController extends Controller
     }
 
     /**
-     * Show the point and its exposed
+     * Show the point and its exposed.
      *
-     * @param integer $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
