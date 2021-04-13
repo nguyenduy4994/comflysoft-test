@@ -33,17 +33,6 @@ class PointController extends Controller
         return back()->with('status', __('Store success'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
     public function show($id)
     {
         $point = PointService::findOrFail($id);

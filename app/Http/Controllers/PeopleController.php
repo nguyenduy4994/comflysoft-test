@@ -8,6 +8,11 @@ use App\Http\Requests\UpdatePeopleRequest;
 
 class PeopleController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         return view('pages.people.index', [
@@ -15,11 +20,21 @@ class PeopleController extends Controller
         ]);
     }
 
+    /**
+     * Display a form to create resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         return view('pages.people.create');
     }
 
+    /**
+     * Store the created resource.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(StorePeopleRequest $request)
     {
         PeopleService::create($request->validated());
@@ -27,6 +42,11 @@ class PeopleController extends Controller
         return redirect()->route('people.index')->with('status', __('Create success'));
     }
 
+    /**
+     * Show edit form of resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function edit($id)
     {
         return view('pages.people.edit', [
@@ -34,6 +54,11 @@ class PeopleController extends Controller
         ]);
     }
 
+    /**
+     * Update the resource.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(UpdatePeopleRequest $request, $id)
     {
         PeopleService::update($id, $request->validated());

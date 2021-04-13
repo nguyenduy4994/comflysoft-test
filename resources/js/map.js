@@ -18,15 +18,14 @@ var exposedPointFeatures = exposedPointPositions.map((item) => {
 var circleFeature = new Feature({
     geometry: new GeomCircle(currentPointPosition, RADIUS / 100000),
 });
+
 circleFeature.setStyle(
     new Style({
         renderer: function renderer(coordinates, state) {
-            var coordinates_0 = coordinates[0];
-            var x = coordinates_0[0];
-            var y = coordinates_0[1];
-            var coordinates_1 = coordinates[1];
-            var x1 = coordinates_1[0];
-            var y1 = coordinates_1[1];
+            var x = coordinates[0][0];
+            var y = coordinates[0][1];
+            var x1 = coordinates[1][0];
+            var y1 = coordinates[1][1];
             var ctx = state.context;
             var dx = x1 - x;
             var dy = y1 - y;
@@ -58,7 +57,7 @@ circleFeature.setStyle(
     })
 );
 
-var map = new Map({
+new Map({
     target: 'map',
     view: new View({
         center: currentPointPosition,

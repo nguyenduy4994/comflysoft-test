@@ -10,11 +10,25 @@ use Illuminate\Support\Facades\Log;
 
 class PeopleService
 {
+    /**
+     * Get list of people with paginate.
+     *
+     * @param int $size
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
     public function getWithPaginate($size = 15)
     {
         return People::paginate($size);
     }
 
+    /**
+     * Create a person.
+     *
+     * @param int $personId
+     * @param array $data
+     * @return \App\Models\Point
+     * @throws \App\Exceptions\StoreFailException
+     */
     public function create($data)
     {
         try {
@@ -28,11 +42,24 @@ class PeopleService
         }
     }
 
+    /**
+     * Find a person.
+     *
+     * @param int $id
+     * @return \App\Models\People
+     */
     public function findOrFail($id)
     {
         return People::findOrFail($id);
     }
 
+    /**
+     * Update a person.
+     *
+     * @param int $id
+     * @param array $data
+     * @return bool
+     */
     public function update($id, $data)
     {
         return $this->findOrFail($id)->update($data);
