@@ -10,7 +10,19 @@ Must meet minimum requirement:
 
 # System design
 
+## Database design
 
+![Database design](https://github.com/nguyenduy4994/comflysoft-test/blob/main/datase.png?raw=true)
+
+## Database detail
+
+People table:
+
+![People table:](https://github.com/nguyenduy4994/comflysoft-test/raw/main/people%20describe.png?raw=true)
+
+Points table:
+
+![Points table:](https://github.com/nguyenduy4994/comflysoft-test/raw/main/points%20describe.png?raw=true)
 
 # Installation
 Clone from this repository
