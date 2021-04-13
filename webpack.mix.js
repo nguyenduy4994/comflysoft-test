@@ -20,7 +20,7 @@ mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'pub
 mix.js('resources/js/map.js', 'public/js/maps/main.js');
 
 if (mix.inProduction()) {
-    mix.version().minify();
+    mix.version();
 } else {
     mix.sourceMaps();
 }
