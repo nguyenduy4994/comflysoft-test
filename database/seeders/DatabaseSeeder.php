@@ -4,12 +4,9 @@ namespace Database\Seeders;
 
 use App\Models\People;
 use Illuminate\Database\Seeder;
-use Illuminate\Foundation\Testing\WithFaker;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithFaker;
-
     /**
      * Seed the application's database.
      *
@@ -17,8 +14,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->setUpFaker();
-
         People::factory()
                 ->count(100)
                 ->hasPoints(100)
